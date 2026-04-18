@@ -29,6 +29,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   font-family: "Public Sans", sans-serif;
   color: var(--text);
   line-height: 1.6;
@@ -80,6 +81,10 @@ button {
 .container {
   width: min(calc(100% - 2rem), var(--container));
   margin: 0 auto;
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
 }
 
 .site-header {
@@ -226,7 +231,7 @@ h3 {
 
 .hero-grid {
   grid-template-columns: 1.08fr 0.92fr;
-  align-items: center;
+  align-items: start;
 }
 
 .eyebrow {
@@ -325,13 +330,14 @@ h3 {
 }
 
 .hero-visual {
-  position: relative;
-  min-height: 520px;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
 }
 
 .hero-card {
   position: relative;
-  min-height: 100%;
+  min-height: 520px;
   padding: 2rem;
   overflow: hidden;
   color: #ffffff;
@@ -376,10 +382,9 @@ h3 {
 }
 
 .floating-note {
-  position: absolute;
-  right: -0.8rem;
-  bottom: 1.5rem;
-  width: min(270px, 84%);
+  position: relative;
+  width: min(320px, 100%);
+  margin-left: auto;
   padding: 1rem 1.1rem;
 }
 
@@ -395,6 +400,7 @@ h3 {
 }
 
 .trust-strip {
+  margin-top: 0.75rem;
   padding-bottom: 1rem;
 }
 
@@ -529,6 +535,11 @@ h3 {
   border-color: rgba(31, 111, 67, 0.34);
 }
 
+.contact-form input:invalid,
+.contact-form textarea:invalid {
+  border-color: rgba(177, 88, 57, 0.35);
+}
+
 .form-actions {
   display: grid;
   gap: 0.8rem;
@@ -605,6 +616,10 @@ h3 {
   .hero {
     padding-top: 3.75rem;
   }
+
+  .hero-card {
+    min-height: 460px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -650,17 +665,22 @@ h3 {
   }
 
   .hero-visual {
-    min-height: 440px;
+    gap: 0.9rem;
   }
 
   .floating-note {
-    right: 0;
-    bottom: -1rem;
+    width: 100%;
+    margin-left: 0;
   }
 
   .hero,
   .section {
     padding: 4rem 0;
+  }
+
+  .hero-card {
+    min-height: 400px;
+    padding: 1.5rem;
   }
 
   .footer-bottom {

@@ -20,10 +20,28 @@ if (navToggle && siteNav) {
       navToggle.setAttribute("aria-expanded", "false");
     });
   });
+
+  document.addEventListener("click", (event) => {
+    if (!siteNav.contains(event.target) && !navToggle.contains(event.target)) {
+      siteNav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      siteNav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
 }
 
 if (contactForm && formStatus) {
   contactForm.addEventListener("submit", (event) => {
+    if (!contactForm.reportValidity()) {
+      return;
+    }
+
     if (contactForm.getAttribute("action") === "#") {
       event.preventDefault();
       formStatus.textContent =

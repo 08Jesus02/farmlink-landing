@@ -546,6 +546,11 @@ h3 {
   align-items: start;
 }
 
+.contact-form.is-submitting .btn-primary {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
 .form-note,
 .form-status {
   margin: 0;
@@ -555,6 +560,14 @@ h3 {
 .form-status {
   min-height: 1.4rem;
   margin-top: 0.9rem;
+}
+
+.form-status.is-success {
+  color: var(--primary);
+}
+
+.form-status.is-error {
+  color: #a34d33;
 }
 
 .site-footer {
